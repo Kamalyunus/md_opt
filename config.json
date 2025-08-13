@@ -1,8 +1,47 @@
 {
-  "stock_value_target_percent": 0.40,
-  "stock_depth_target": 0.30,
-  "available_depths": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
-  "min_band_width": 12,
-  "max_iterations": 25,
-  "zero_seller_threshold": 100
+  "ithax": {
+    "stock_value_target_percent": 0.40,
+    "stock_depth_target": 0.30,
+    "available_depths": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+    "min_band_width": 12,
+    "max_iterations": 25,
+    "zero_seller_threshold": 100
+  },
+  
+  "semi_parametric_model": {
+    "lgb_num_rounds": 100,
+    "lgb_early_stopping_rounds": 10,
+    "regularization_lambda": 0.5,
+    "convergence_tolerance": 1e-6,
+    "validation_split": 0.2,
+    "random_state": 42,
+    "lgb_params": {
+      "objective": "regression",
+      "metric": "rmse",
+      "boosting_type": "gbdt",
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "verbose": -1,
+      "random_state": 42
+    }
+  },
+  
+  "data_processing": {
+    "epsilon": 1e-8,
+    "min_sales_threshold": 0,
+    "price_ratio_min": 0.3,
+    "price_ratio_max": 1.2,
+    "elasticity_min": -5.0,
+    "elasticity_max": 0.0,
+    "demand_multiplier_min": 0.01,
+    "demand_multiplier_max": 100
+  },
+  
+  "optimization": {
+    "default_price_ratio_points": 50,
+    "counterfactual_confidence_interval": 0.95
+  }
 }
